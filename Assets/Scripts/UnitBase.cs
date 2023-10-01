@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Gespell
 {
-    public class UnitBase : MonoBehaviour, IInitializable<(UnitStat stat, UnitFaction faction)>, IHasStats, IHasFaction,
+    public abstract class UnitBase : MonoBehaviour, IInitializable<(UnitStat stat, UnitFaction faction)>, IHasStats, IHasFaction,
         IDamageable, ICanAttack
     {
         private UnitStat stat;
@@ -14,19 +14,19 @@ namespace Gespell
         public bool IsDead { get; private set; }
         public bool Initialized { get; private set; }
         
-        public void Initialize((UnitStat stat, UnitFaction faction) data)
+        public virtual void Initialize((UnitStat stat, UnitFaction faction) data)
         {
             stat = data.stat;
             Faction = data.faction;
             Initialized = true;
         }
         
-        public void Attack(IDamageable target, int amount)
+        public virtual void Attack(IDamageable target, int amount)
         {
             target.Damage(amount);
         }
         
-        public void Damage(int amount)
+        public virtual void Damage(int amount)
         {
             stat.health -= amount;
             if (stat.health <= 0)
