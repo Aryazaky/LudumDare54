@@ -10,10 +10,10 @@ namespace Gespell.Utilities
 
         private void Start()
         {
-            ArrangeChildrenEvenly();
+            ArrangeChildren();
         }
 
-        private void ArrangeChildrenEvenly()
+        public void ArrangeChildren()
         {
             int childCount = transform.childCount;
             if (childCount <= 1)
@@ -35,7 +35,12 @@ namespace Gespell.Utilities
 
         private void OnValidate()
         {
-            ArrangeChildrenEvenly();
+            ArrangeChildren();
+        }
+
+        private void OnTransformChildrenChanged()
+        {
+            ArrangeChildren();
         }
     }
 }

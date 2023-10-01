@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Gespell.Scriptables;
+using Gespell.Utilities;
 using UnityEngine;
 
 namespace Gespell
@@ -10,6 +11,7 @@ namespace Gespell
     {
         [SerializeField] private UnitData playerData;
         [SerializeField] private Vector3 playerPosition;
+        [SerializeField] private LinearObjectArranger enemyParent;
         [SerializeField] private Vector3 waveSpawnOrigin;
         [SerializeField] private Vector3 waveSpawnOffset;
         [SerializeField] private List<WaveData> waves = new();
@@ -38,14 +40,15 @@ namespace Gespell
                 {
                     currentWave = waves[waveIndex];
                     currentWave.OnWaveCleared += OnCurrentWaveClearedHandler;
-                    currentWave.StartWave(this, waveSpawnOrigin, waveSpawnOffset);
+                    currentWave.OnWaveCompletedSpawn += enemyParent.ArrangeChildren;
+                    currentWave.StartWave(this, waveSpawnOrigin, waveSpawnOffset, enemyParent.transform);
                 }
             }
         }
 
         private void OnCurrentWaveClearedHandler()
         {
-            currentWave.OnWaveCleared -= OnCurrentWaveClearedHandler;
+            Unsubscribe();
             currentWave = null;
             waveIndex++;
             if(waveIndex >= 0 && waveIndex < waves.Count)
@@ -53,6 +56,30 @@ namespace Gespell
                 StartNextWave();
             }
             else OnAllWaveCleared?.Invoke();
+        }
+
+        private void Unsubscribe()
+        {
+            currentWave.OnWaveCleared -= OnCurrentWaveClearedHandler;
+            currentWave.OnWaveCompletedSpawn -= enemyParent.ArrangeChildren;
+        }
+
+        private void OnValidate()
+        {
+            if(waves.Contains(null)) Debug.LogError($"There is a null entry in {this}!");
+        }
+
+        private void OnEnable()
+        {
+            
+        }
+
+        private void OnDisable()
+        {
+            if (currentWave != null)
+            {
+                Unsubscribe();
+            }
         }
     }
 }

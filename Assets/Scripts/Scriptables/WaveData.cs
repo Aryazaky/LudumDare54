@@ -12,14 +12,14 @@ namespace Gespell.Scriptables
         [SerializeField] private List<UnitData> enemies = new();
         [SerializeField, Min(1)] private int maxEnemies = 3;
         private readonly List<UnitBase> spawnedEnemies = new();
-        private bool waveStarted;
+        [NonSerialized] private bool waveStarted;
 
         public event Action OnWaveCompletedSpawn;
         public event Action OnWaveCleared;
 
         public IEnumerable<UnitBase> SpawnedEnemies => spawnedEnemies;
 
-        public void StartWave(UnitManager unitManager, Vector3 spawnOrigin, Vector3 offset)
+        public void StartWave(UnitManager unitManager, Vector3 spawnOrigin, Vector3 offset, Transform parent)
         {
             if(!waveStarted)
             {
@@ -28,10 +28,12 @@ namespace Gespell.Scriptables
                 for (var index = 0; index < enemies.Count; index++)
                 {
                     var unitData = enemies[index];
-                    var spawned = unitData.Spawn(unitManager, spawnOrigin + offset * index);
+                    var spawned = unitData.Spawn(unitManager, spawnOrigin + offset * index, parent);
                     spawned.OnDead += EnemyOnDeadHandler;
                     spawnedEnemies.Add(spawned);
                 }
+
+                Debug.Log($"Wave {this} spawn completed");
                 OnWaveCompletedSpawn?.Invoke();
             }
             else Debug.LogError($"Wave {this} already started");

@@ -8,7 +8,8 @@ namespace Gespell.Units
     public class Enemy : UnitBase
     {
         [SerializeField, Min(0.1f)] private float range = 0.5f;
-        [SerializeField, Min(0.1f)] private float knockDuration = 0.5f;
+        [SerializeField, Range(0, 1)] private float knockStrength = 0.5f;
+        [SerializeField, Min(0.1f)] private float knockDuration = 2f;
         private Vector3 initialPosition;
         private Tweener moveTween;
         private Tweener knockTween;
@@ -39,7 +40,7 @@ namespace Gespell.Units
             
             // Knock self back
             knockTween?.Kill();
-            knockTween = transform.DOMove((transform.position - initialPosition).normalized, knockDuration)
+            knockTween = transform.DOMove(Vector3.Lerp(transform.position, initialPosition, knockStrength), knockDuration)
                 .SetEase(Ease.OutBack)
                 .OnKill(StartMoving);
         }
