@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8b6834ecb6ddd7444a460c0dee5dc3be
+guid: aa208a5613d5cfd409797931e29ac33b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vfx-spell_ice_0
+      name: vfx-spell_water_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6dfd1cf5ec1fb4646b9a1194ab2fee50
-      internalID: 1636465300
+      spriteID: ffc0918e1e2d7df4bbb76d50a22b27b0
+      internalID: -1528070601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx-spell_ice_1
+      name: vfx-spell_water_1
       rect:
         serializedVersion: 2
         x: 256
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cfa7f4afca309044be2d0b92d7ab986
-      internalID: 152970001
+      spriteID: c11fa4e6b14f38349a0c41a2ac76fe42
+      internalID: -1137004688
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx-spell_ice_2
+      name: vfx-spell_water_2
       rect:
         serializedVersion: 2
         x: 512
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd665e0b20ca8834281a353422c6908a
-      internalID: -535053338
+      spriteID: f9faf839a8f8914499a192dd016efffb
+      internalID: -86641988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx-spell_ice_3
+      name: vfx-spell_water_3
       rect:
         serializedVersion: 2
         x: 768
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac429ad49c2038d4ba207968c7bee9c7
-      internalID: 844989608
+      spriteID: edb185b28ccd20044acfbf237e5c6e12
+      internalID: -1544591219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx-spell_ice_4
+      name: vfx-spell_water_4
       rect:
         serializedVersion: 2
         x: 1024
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68ee29d2af8da1a46b67f44018c6e964
-      internalID: 1561641579
+      spriteID: 0d0c82ad032fbfd448e5866cb590dcbb
+      internalID: -1503267569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx-spell_ice_5
+      name: vfx-spell_water_5
       rect:
         serializedVersion: 2
         x: 1280
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0c2a4674c7ac304a815f51c1a88e843
-      internalID: 1938447520
+      spriteID: 278a070422ca5ed41bded1720354c9d5
+      internalID: -572175211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx-spell_ice_6
+      name: vfx-spell_water_6
       rect:
         serializedVersion: 2
         x: 1536
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17fd279f7d9faa247b2079da54d576e1
-      internalID: -925405292
+      spriteID: f2a4e6984036ed74bb19975bac3e58a8
+      internalID: -830239926
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx-spell_ice_7
+      name: vfx-spell_water_7
       rect:
         serializedVersion: 2
         x: 1792
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60d6ef87a3a685d4cb9c85278d86d634
-      internalID: -1414411616
+      spriteID: 49765bfa057fe3343a6854c86a806de0
+      internalID: -1476831203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx-spell_ice_8
+      name: vfx-spell_water_8
       rect:
         serializedVersion: 2
         x: 2048
@@ -292,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25fb349fd5f7fe845b09b7b58fee8626
-      internalID: 33928158
+      spriteID: d9d0a0c8be753484aa73125fb5902e18
+      internalID: 127958683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx-spell_ice_9
+      name: vfx-spell_water_9
       rect:
         serializedVersion: 2
         x: 2304
@@ -313,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9e73f3e52686484bbe61e0ea073ec0a
-      internalID: 1671639228
+      spriteID: 81ca8424279554e46a031d692c4e4ade
+      internalID: 1343072726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx-spell_ice_10
+      name: vfx-spell_water_10
       rect:
         serializedVersion: 2
         x: 2560
@@ -334,14 +334,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b4bd17dfc5c8b44b90b3f2a223c3378
-      internalID: -1629120057
+      spriteID: 67e05b2f5d9984048a0ddbf15e197d57
+      internalID: -315785154
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx-spell_ice_11
+      name: vfx-spell_water_11
       rect:
         serializedVersion: 2
         x: 2816
@@ -355,8 +355,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9043c972c62c404ebba9f6e7939cc95
-      internalID: 310757889
+      spriteID: 6dd5dd90aeca94942ab3d59c5708f882
+      internalID: -1854009285
       vertices: []
       indices: 
       edges: []
@@ -372,18 +372,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      vfx-spell_ice_0: 1636465300
-      vfx-spell_ice_1: 152970001
-      vfx-spell_ice_10: -1629120057
-      vfx-spell_ice_11: 310757889
-      vfx-spell_ice_2: -535053338
-      vfx-spell_ice_3: 844989608
-      vfx-spell_ice_4: 1561641579
-      vfx-spell_ice_5: 1938447520
-      vfx-spell_ice_6: -925405292
-      vfx-spell_ice_7: -1414411616
-      vfx-spell_ice_8: 33928158
-      vfx-spell_ice_9: 1671639228
+      vfx-spell_water_0: -1528070601
+      vfx-spell_water_1: -1137004688
+      vfx-spell_water_10: -315785154
+      vfx-spell_water_11: -1854009285
+      vfx-spell_water_2: -86641988
+      vfx-spell_water_3: -1544591219
+      vfx-spell_water_4: -1503267569
+      vfx-spell_water_5: -572175211
+      vfx-spell_water_6: -830239926
+      vfx-spell_water_7: -1476831203
+      vfx-spell_water_8: 127958683
+      vfx-spell_water_9: 1343072726
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

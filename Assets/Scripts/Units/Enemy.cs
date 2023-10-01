@@ -20,35 +20,28 @@ namespace Gespell.Units
             StartMoving();
         }
 
-        private void StartMoving()
-        {
-            StartMoving(Manager.Player.transform.position, OnCollide);
-        }
+        private void StartMoving() => StartMoving(Manager.Player.transform.position, OnCollideWithPlayer);
 
         private void StartMoving(Vector3 targetPosition, TweenCallback onComplete)
         {
-            var distance = DistanceTo(targetPosition);
-            moveTween = transform.DOMove(targetPosition, distance / Stat.speed)
+            moveTween?.Kill();
+            moveTween = transform.DOMove(targetPosition, DistanceTo(targetPosition) / Stat.speed)
                 .SetEase(Ease.InSine)
-                .OnKill(onComplete)
-                .OnComplete(onComplete);
+                .OnKill(onComplete);
         }
 
-        private float DistanceTo(Vector3 targetPosition)
-        {
-            return Vector3.Distance(transform.position, targetPosition);
-        }
+        private float DistanceTo(Vector3 targetPosition) => Vector3.Distance(transform.position, targetPosition);
 
-        private void OnCollide()
+        private void OnCollideWithPlayer()
         {
             // Additional check before attack just in case it's called on OnKill when it's not near player yet
             if(DistanceTo(Manager.Player.transform.position) < range) Attack(Manager.Player, Stat.attack);
             
             // Knock self back
+            knockTween?.Kill();
             knockTween = transform.DOMove((transform.position - initialPosition).normalized, knockDuration)
                 .SetEase(Ease.OutBack)
-                .OnKill(StartMoving)
-                .OnComplete(StartMoving);
+                .OnKill(StartMoving);
         }
     }
 }
