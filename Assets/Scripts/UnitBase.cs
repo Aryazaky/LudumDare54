@@ -5,17 +5,25 @@ using UnityEngine;
 
 namespace Gespell
 {
-    public abstract class UnitBase : MonoBehaviour, IInitializable<(UnitStat stat, UnitFaction faction)>, IHasStats, IHasFaction,
-        IDamageable, ICanAttack
+    public abstract class UnitBase : MonoBehaviour, IHasStats, IHasFaction, IDamageable, ICanAttack,
+        IInitializable<(UnitManager unitManager, UnitStat stat, UnitFaction faction)>
     {
+        protected UnitManager Manager;
         private UnitStat stat;
+        public new Transform transform { get; private set; }
         public UnitStat Stat => stat;
         public UnitFaction Faction { get; private set; }
         public bool IsDead { get; private set; }
         public bool Initialized { get; private set; }
-        
-        public virtual void Initialize((UnitStat stat, UnitFaction faction) data)
+
+        private void Awake()
         {
+            transform = base.transform;
+        }
+
+        public virtual void Initialize((UnitManager unitManager, UnitStat stat, UnitFaction faction) data)
+        {
+            Manager = data.unitManager;
             stat = data.stat;
             Faction = data.faction;
             Initialized = true;

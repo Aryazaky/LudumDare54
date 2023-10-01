@@ -10,10 +10,10 @@ namespace Gespell.Scriptables
         [SerializeField] private UnitFaction faction;
         [SerializeField] private UnitStat stat;
 
-        public UnitBase Spawn(Vector3 position, Transform parent = null)
+        public UnitBase Spawn(UnitManager unitManager, Vector3 position, Transform parent = null)
         {
             var spawned = Instantiate(unitPrefab, position, Quaternion.identity, parent);
-            spawned.Initialize((stat, faction));
+            spawned.Initialize((unitManager, stat, faction));
             return spawned;
         }
     }

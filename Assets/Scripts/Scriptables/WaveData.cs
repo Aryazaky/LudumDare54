@@ -17,7 +17,9 @@ namespace Gespell.Scriptables
         public event Action OnWaveCompletedSpawn;
         public event Action OnWaveCleared;
 
-        public void StartWave(Vector3 spawnOrigin, Vector3 offset)
+        public IEnumerable<UnitBase> SpawnedEnemies => spawnedEnemies;
+
+        public void StartWave(UnitManager unitManager, Vector3 spawnOrigin, Vector3 offset)
         {
             if(!waveStarted)
             {
@@ -26,7 +28,7 @@ namespace Gespell.Scriptables
                 for (var index = 0; index < enemies.Count; index++)
                 {
                     var unitData = enemies[index];
-                    var spawned = unitData.Spawn(spawnOrigin + offset * index);
+                    var spawned = unitData.Spawn(unitManager, spawnOrigin + offset * index);
                     spawned.OnDead += EnemyOnDeadHandler;
                     spawnedEnemies.Add(spawned);
                 }

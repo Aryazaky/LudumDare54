@@ -7,11 +7,12 @@ namespace Gespell
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private UnitData player;
-        // Start is called before the first frame update
+        [SerializeField] private UnitManager unitManager;
+
         void Start()
         {
-
+            unitManager.SpawnPlayer();
+            unitManager.StartNextWave();
         }
 
         // Update is called once per frame
