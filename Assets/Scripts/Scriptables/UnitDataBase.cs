@@ -1,6 +1,5 @@
 ﻿using System;
 using Gespell.Enums;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Gespell.Scriptables
@@ -8,7 +7,7 @@ namespace Gespell.Scriptables
     public abstract class UnitDataBase : ScriptableObject
     {
         [SerializeField] protected UnitBase unitPrefab;
-        [SerializeField] protected AnimatorController animatorController;
+        [SerializeField] protected RuntimeAnimatorController animatorController;
         [SerializeField] protected Vector3 healthBarRelativePosition;
         [SerializeField] protected HealthBar healthBarPrefab;
 
