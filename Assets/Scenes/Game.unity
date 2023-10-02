@@ -1421,7 +1421,6 @@ MonoBehaviour:
   basePointCount: 2
   lengthIncrement: 2
   moveThreshold: 0.2
-  templateIndex: 0
   lineRenderer: {fileID: 2078119400}
   lineRendererDebug:
   - {fileID: 1128319156}

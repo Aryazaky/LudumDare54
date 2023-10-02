@@ -1,16 +1,18 @@
 ﻿using System;
 using Gespell.Enums;
 using Gespell.Interfaces;
+using Gespell.Utilities;
 using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Gespell
 {
-    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
     public abstract class UnitBase : MonoBehaviour, IHasStats, IHasFaction, IDamageable, ICanAttack, IHealable, IHasHealthBar,
         IInitializable<(UnitManager unitManager, AnimatorController animatorController, UnitStat stat, UnitFaction faction)>
     {
         protected UnitManager Manager;
+        private new SpriteRenderer renderer;
         private UnitStat stat;
         
         // ReSharper disable once InconsistentNaming
@@ -23,6 +25,7 @@ namespace Gespell
         private void Awake()
         {
             transform = base.transform;
+            renderer = GetComponent<SpriteRenderer>();
         }
 
         public virtual void Initialize((UnitManager unitManager, AnimatorController animatorController, UnitStat stat, UnitFaction faction) data)
@@ -47,6 +50,7 @@ namespace Gespell
             {
                 Debug.Log($"{this} take {amount} damage");
                 stat.health -= amount;
+                renderer.BlinkColor(this, Color.white, Color.red);
                 OnDamaged?.Invoke(this);
                 OnHealthChanged?.Invoke(stat.health);
                 if (stat.health <= 0)

@@ -15,7 +15,7 @@ MonoBehaviour:
   unitPrefab: {fileID: -2155238774691367515, guid: d0ba6b597acf72c4bbb646c77c94d233, type: 3}
   animatorController: {fileID: 9100000, guid: 97091e2c8a0cbe84ca3d0a36ae33c5d4, type: 2}
   healthBarRelativePosition: {x: 0, y: 0, z: 0}
-  healthBarPrefab: {fileID: 0}
+  healthBarPrefab: {fileID: 1488606480162117767, guid: 31d678c4107560d4081eb58a3bd10238, type: 3}
   faction: 1
   stat:
     health: 10

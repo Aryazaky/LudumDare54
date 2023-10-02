@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Boar
   m_EditorClassIdentifier: 
   unitPrefab: {fileID: -2155238774691367515, guid: d0ba6b597acf72c4bbb646c77c94d233, type: 3}
+  animatorController: {fileID: 9100000, guid: fbc9dcbf58bd7894fa86b96dfe961bc4, type: 2}
+  healthBarRelativePosition: {x: 0, y: 0, z: 0}
+  healthBarPrefab: {fileID: 1488606480162117767, guid: 31d678c4107560d4081eb58a3bd10238, type: 3}
   faction: 1
   stat:
     health: 10
@@ -20,6 +23,3 @@ MonoBehaviour:
     interval: 1
     speed: 7
     range: 5
-  animatorController: {fileID: 9100000, guid: fbc9dcbf58bd7894fa86b96dfe961bc4, type: 2}
-  healthBarRelativePosition: {x: 0, y: 0, z: 0}
-  healthBarPrefab: {fileID: 0}
