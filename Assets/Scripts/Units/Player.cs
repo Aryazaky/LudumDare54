@@ -10,5 +10,11 @@ namespace Gespell.Units
         {
             base.Initialize((data.unitManager, data.animatorController, data.stat, UnitFaction.Player));
         }
+
+        protected override void OnDeadVirtual()
+        {
+            base.OnDeadVirtual();
+            Debug.Log("Game Over");
+        }
     }
 }

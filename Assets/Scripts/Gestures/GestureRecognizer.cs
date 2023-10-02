@@ -13,10 +13,16 @@ namespace Gespell.Gestures
         [SerializeField] private float lengthIncrement = 0.5f;
         [SerializeField] private float moveThreshold = 0.2f;
         [SerializeField] private LineRenderer lineRenderer;
-        [SerializeField] private LineRenderer[] lineRendererDebug;
+        [SerializeField] private LineRenderer lineRendererPrefab;
+
+        private List<LineRenderer> lineRenderers = new();
+        private List<Gesture> gestures = new();
+        //[SerializeField] private LineRenderer[] lineRendererDebug;
         private Vector2 lastMousePosition;
         private readonly List<Vector2> currentPath = new();
         private bool drawing;
+
+        public event Action<SpellManager.SpellType> OnSpellDrawn;
 
         private void Update()
         {
@@ -32,7 +38,10 @@ namespace Gespell.Gestures
             else if (Input.GetMouseButtonUp(0))
             {
                 drawing = false;
-                StoreGesture();
+                if(!IsPathTooCloseToForbidden(currentPath, gestures.SelectMany(g => g.Path), 0.1f))
+                {
+                    CheckGesture();
+                }
             }
             else if (drawing)
             {
@@ -54,8 +63,15 @@ namespace Gespell.Gestures
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             return mousePosition;
         }
+        
+        private bool IsPathTooCloseToForbidden(IEnumerable<Vector2> gesturePath, IEnumerable<Vector2> forbiddenPath, float minimumDistance)
+        {
+            return gesturePath.Any(gesturePoint =>
+                forbiddenPath.Select(forbiddenPoint => Vector2.Distance(gesturePoint, forbiddenPoint))
+                    .Any(distance => distance < minimumDistance));
+        }
 
-        private void StoreGesture()
+        private void CheckGesture()
         {
             // Calculate the targetPointCount based on the length of the currentPath
             var rawGesture = new Gesture(currentPath);
@@ -84,29 +100,54 @@ namespace Gespell.Gestures
 
             var points2 = gesture.GetResampledPath(5).ToArray();
             var isStraightLine = GestureUtility.IsALine(points2, 20, 0.2f);
+            var isVerticalDirection = GestureUtility.IsVerticalDirection(points2[0] - points[^1]);
 
             var points3 = gesture.GetResampledPath(3).ToArray();
             var isVShape = GestureUtility.IsVShape(points3, 60);
 
-            DrawGesturePathDebug(points, points2, points3);
-            var isVerticalDirection = GestureUtility.IsVerticalDirection(points2[0] - points[^1]);
-            Debug.LogWarning($"circle:{isCircle}, line:{isStraightLine} (horizontal? {isVerticalDirection}), v:{isVShape}");
+            //DrawGesturePathDebug(points, points2, points3);
+            //Debug.LogWarning($"circle:{isCircle}, line:{isStraightLine} (horizontal? {isVerticalDirection}), v:{isVShape}");
+
+            if (isCircle)
+            {
+                OnSpellDrawn?.Invoke(SpellManager.SpellType.O);
+                StoreGesture(gesture);
+            }
+            else if(isVShape)
+            {
+                OnSpellDrawn?.Invoke(SpellManager.SpellType.V);
+                StoreGesture(gesture);
+            }
+            else if (isStraightLine)
+            {
+                OnSpellDrawn?.Invoke(
+                    isVerticalDirection ? SpellManager.SpellType.I : SpellManager.SpellType.HorizontalI);
+                StoreGesture(gesture);
+            }
         }
-        
+
+        private void StoreGesture(Gesture gesture)
+        {
+            var line = Instantiate(lineRendererPrefab, transform);
+            lineRenderers.Add(line);
+            DrawGesturePath(line, gesture.Path.ToArray());
+            gestures.Add(gesture);
+        }
+
         private void DrawGesturePath(IReadOnlyList<Vector2> path)
         {
             DrawGesturePath(lineRenderer, path);
         }
 
-        private void DrawGesturePathDebug(params IReadOnlyList<Vector2>[] paths)
-        {
-            var a = paths.Zip(lineRendererDebug, (path, renderer) => (path, renderer));
-            foreach (var b in a)
-            {
-                if(b.renderer == null || b.path == null) continue;
-                DrawGesturePath(b.renderer, b.path);
-            }
-        }
+        // private void DrawGesturePathDebug(params IReadOnlyList<Vector2>[] paths)
+        // {
+        //     var a = paths.Zip(lineRendererDebug, (path, renderer) => (path, renderer));
+        //     foreach (var b in a)
+        //     {
+        //         if(b.renderer == null || b.path == null) continue;
+        //         DrawGesturePath(b.renderer, b.path);
+        //     }
+        // }
         
         private static void DrawGesturePath(LineRenderer renderer, IReadOnlyList<Vector2> path)
         {

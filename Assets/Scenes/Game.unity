@@ -158,6 +158,56 @@ Transform:
   - {fileID: 1307011973}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &399458850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 399458851}
+  - component: {fileID: 399458852}
+  m_Layer: 0
+  m_Name: SpellManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &399458851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399458850}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 959790344}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &399458852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399458850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ed53d8ff9f4baa9ce703ed1dec8234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitManager: {fileID: 1913619022}
+  spellPosition: {x: 0, y: 12, z: 0}
+  vSpell: {fileID: 5183946091640127912, guid: 63d242bfd5e58084bbcdbb2f29b6cb64, type: 3}
+  iSpell: {fileID: 5183946091640127912, guid: f5917a5f59bbfe343988d4d3faeed645, type: 3}
+  horizontalISpell: {fileID: 5183946091640127912, guid: cb49b26bda0d5864786f74cba10c70fc, type: 3}
+  oSpell: {fileID: 5183946091640127912, guid: 5ea81d2bfdd1f41489910379c92afbaa, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,6 +704,7 @@ Transform:
   - {fileID: 1580793432}
   - {fileID: 1913619021}
   - {fileID: 2078119398}
+  - {fileID: 399458851}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1128319154
@@ -1053,6 +1104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitManager: {fileID: 1913619022}
+  gestureRecognizer: {fileID: 2078119399}
+  spellManager: {fileID: 399458852}
 --- !u!1 &1685365368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,11 +1475,7 @@ MonoBehaviour:
   lengthIncrement: 2
   moveThreshold: 0.2
   lineRenderer: {fileID: 2078119400}
-  lineRendererDebug:
-  - {fileID: 1128319156}
-  - {fileID: 1769855971}
-  - {fileID: 1324268296}
-  - {fileID: 733660680}
+  lineRendererPrefab: {fileID: 1128319156}
 --- !u!120 &2078119400
 LineRenderer:
   serializedVersion: 2

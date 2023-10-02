@@ -20,9 +20,22 @@ namespace Gespell
 
         public event Action OnAllWaveCleared;
 
-        public UnitBase GetSpawnedEnemy()
+        public void DoStuffToAll<T>(Func<T, bool> predicate, Action<T> doStuff) where T : UnitBase
         {
-            return currentWave != null ? currentWave.SpawnedEnemies.First() : null;
+            if (currentWave != null) currentWave.SpawnedEnemies
+                .OfType<T>()
+                .Where(predicate)
+                .ForEach(doStuff);
+        }
+
+        public void DoStuffToXNearest<T>(Func<T, bool> predicate, int x, Action<T> doStuff) where T : UnitBase
+        {
+            if (currentWave != null) currentWave.SpawnedEnemies
+                .OfType<T>()
+                .Where(predicate)
+                .SortByDistanceTo(Player.transform.position)
+                .Take(x)
+                .ForEach(doStuff);
         }
 
         public UnitBase Player { get; private set; }
@@ -30,6 +43,7 @@ namespace Gespell
         public void SpawnPlayer()
         {
             Player = playerData.Spawn(this, playerPosition, transform);
+            waves.ForEach(w => w.StopWave());
         }
 
         public void StartNextWave()

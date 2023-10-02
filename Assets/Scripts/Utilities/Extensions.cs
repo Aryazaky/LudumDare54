@@ -46,5 +46,23 @@ namespace Gespell.Utilities
                 yield return new WaitForSeconds(blinkDuration);
             }
         }
+
+        public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
+        {
+            foreach (var obj in enumerable)
+            {
+                action(obj);
+            }
+        }
+        
+        public static IEnumerable<T> SortByDistanceTo<T>(this IEnumerable<T> collection, Vector3 position) where T : MonoBehaviour
+        {
+            if (collection == null)
+            {
+                throw new System.ArgumentNullException(nameof(collection), "Collection cannot be null.");
+            }
+
+            return collection.OrderBy(item => Vector3.Distance(item.transform.position, position));
+        }
     }
 }

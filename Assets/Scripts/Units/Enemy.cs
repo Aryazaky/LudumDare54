@@ -41,10 +41,22 @@ namespace Gespell.Units
             // Additional check before attack just in case it's called on OnKill when it's not near player yet
             if(DistanceTo(Manager.Player.transform.position) <= Stat.range) Attack(Manager.Player, Stat.attack);
             
+            KnockBack();
+        }
+
+        public void KnockBack()
+        {
             // Knock self back
             knockTween = transform.DOMove(GetPositionBetween(transform.position, initialPosition, knockStrength), knockDuration)
                 .SetEase(Ease.OutBack)
                 .OnKill(StartMoving);
+        }
+
+        protected override void OnDeadVirtual()
+        {
+            base.OnDeadVirtual();
+            transform.DOKill();
+            Destroy(gameObject);
         }
 
         private static Vector3 GetPositionBetween(Vector3 A, Vector3 B, float x)

@@ -58,9 +58,15 @@ namespace Gespell
                     stat.health = 0;
                     Debug.Log($"{this} dead");
                     IsDead = true;
+                    OnDeadVirtual();
                     OnDead?.Invoke(this);
                 }
             }
+        }
+
+        protected virtual void OnDeadVirtual()
+        {
+            
         }
 
         public event Action<IDamageable> OnDamaged;
