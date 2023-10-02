@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3098034817797376655, guid: db98facc066d1fa42bbbe7733a35105d, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: EnemyBase
       objectReference: {fileID: 0}
     - target: {fileID: 5387216825733326807, guid: db98facc066d1fa42bbbe7733a35105d, type: 3}
       propertyPath: m_Size.x
@@ -73,5 +73,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c57735becee4f8c83ce0ccb8e262fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockStrength: 0.5
+  knockStrength: 5
   knockDuration: 2

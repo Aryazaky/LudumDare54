@@ -6,16 +6,16 @@ namespace Gespell
 {
     public abstract class HealthBar : MonoBehaviour, IInitializable<IHasHealthBar>
     {
-        protected IHasHealthBar unit;
+        protected IHasHealthBar Owner;
 
         private void OnEnable()
         {
-            if (unit != null) unit.OnHealthChanged += UnitOnHealthChanged;
+            if (Owner != null) Owner.OnHealthChanged += OwnerOnHealthChanged;
         }
 
         private void OnDisable()
         {
-            if (unit != null) unit.OnHealthChanged -= UnitOnHealthChanged;
+            if (Owner != null) Owner.OnHealthChanged -= OwnerOnHealthChanged;
         }
 
         public bool Initialized { get; private set; }
@@ -27,11 +27,11 @@ namespace Gespell
                 Debug.LogError($"IHasHealthBar is null! Cannot initialize {this}");
                 return;
             }
-            unit = data;
-            unit.OnHealthChanged += UnitOnHealthChanged;
+            Owner = data;
+            Owner.OnHealthChanged += OwnerOnHealthChanged;
             Initialized = true;
         }
 
-        protected abstract void UnitOnHealthChanged(int value);
+        protected abstract void OwnerOnHealthChanged(int value);
     }
 }
