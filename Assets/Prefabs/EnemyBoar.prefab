@@ -119,6 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c57735becee4f8c83ce0ccb8e262fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 0.5
-  knockStrength: 0.588
+  range: 0.1
+  knockStrength: 5
   knockDuration: 1

@@ -30,6 +30,7 @@ namespace Gespell.Scriptables
                     var unitData = enemies[index];
                     var spawned = unitData.Spawn(unitManager, spawnOrigin + offset * index, parent);
                     spawned.OnDead += EnemyOnDeadHandler;
+                    spawned.gameObject.name = $"{unitData.name}_{index}";
                     spawnedEnemies.Add(spawned);
                 }
 
@@ -39,12 +40,22 @@ namespace Gespell.Scriptables
             else Debug.LogError($"Wave {this} already started");
         }
 
+        public void StopWave()
+        {
+            waveStarted = false;
+            foreach (var enemy in spawnedEnemies)
+            {
+                EnemyOnDeadHandler(enemy);
+            }
+        }
+
         private void EnemyOnDeadHandler(IDamageable obj)
         {
             obj.OnDead -= EnemyOnDeadHandler;
             spawnedEnemies.Remove(obj as UnitBase);
             if (waveStarted && !spawnedEnemies.Any())
             {
+                Debug.Log($"Wave {this} cleared");
                 OnWaveCleared?.Invoke();
                 waveStarted = false;
             }

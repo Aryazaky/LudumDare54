@@ -15,5 +15,4 @@ MonoBehaviour:
   enemies:
   - {fileID: 11400000, guid: 044d7e9e6fac4464b88eb96b4684251d, type: 2}
   - {fileID: 11400000, guid: 044d7e9e6fac4464b88eb96b4684251d, type: 2}
-  - {fileID: 11400000, guid: 044d7e9e6fac4464b88eb96b4684251d, type: 2}
   maxEnemies: 3

@@ -41,9 +41,11 @@ namespace Gespell
                     currentWave = waves[waveIndex];
                     currentWave.OnWaveCleared += OnCurrentWaveClearedHandler;
                     currentWave.OnWaveCompletedSpawn += enemyParent.ArrangeChildren;
+                    Debug.Log($"Starting wave {currentWave} ({waveIndex}/{waves.Count})");
                     currentWave.StartWave(this, waveSpawnOrigin, waveSpawnOffset, enemyParent.transform);
                 }
             }
+            else Debug.LogWarning($"Wave {currentWave} is currently running!");
         }
 
         private void OnCurrentWaveClearedHandler()
@@ -55,7 +57,11 @@ namespace Gespell
             {
                 StartNextWave();
             }
-            else OnAllWaveCleared?.Invoke();
+            else
+            {
+                Debug.Log($"All waves cleared");
+                OnAllWaveCleared?.Invoke();
+            }
         }
 
         private void Unsubscribe()

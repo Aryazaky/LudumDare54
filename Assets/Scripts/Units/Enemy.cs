@@ -7,8 +7,7 @@ namespace Gespell.Units
 {
     public class Enemy : UnitBase
     {
-        [SerializeField, Min(0.1f)] private float range = 0.5f;
-        [SerializeField, Range(0, 1)] private float knockStrength = 0.5f;
+        [SerializeField, Min(0)] private float knockStrength = 0.5f;
         [SerializeField, Min(0.1f)] private float knockDuration = 2f;
         private Vector3 initialPosition;
         private Tweener moveTween;
@@ -25,8 +24,10 @@ namespace Gespell.Units
 
         private void StartMoving(Vector3 targetPosition, TweenCallback onComplete)
         {
-            moveTween?.Kill();
-            moveTween = transform.DOMove(targetPosition, DistanceTo(targetPosition) / Stat.speed)
+            var distanceTo = DistanceTo(targetPosition);
+            var duration = distanceTo / Stat.speed;
+            Debug.Log($"{this} start moving for {duration}, distance {distanceTo}");
+            moveTween = transform.DOMove(GetPositionBetween(targetPosition, transform.position, Stat.range), duration)
                 .SetEase(Ease.InSine)
                 .OnKill(onComplete);
         }
@@ -35,14 +36,26 @@ namespace Gespell.Units
 
         private void OnCollideWithPlayer()
         {
+            Debug.Log($"{this} collides with player");
             // Additional check before attack just in case it's called on OnKill when it's not near player yet
-            if(DistanceTo(Manager.Player.transform.position) < range) Attack(Manager.Player, Stat.attack);
+            if(DistanceTo(Manager.Player.transform.position) <= Stat.range) Attack(Manager.Player, Stat.attack);
             
             // Knock self back
-            knockTween?.Kill();
-            knockTween = transform.DOMove(Vector3.Lerp(transform.position, initialPosition, knockStrength), knockDuration)
+            knockTween = transform.DOMove(GetPositionBetween(transform.position, initialPosition, knockStrength), knockDuration)
                 .SetEase(Ease.OutBack)
                 .OnKill(StartMoving);
+        }
+
+        private static Vector3 GetPositionBetween(Vector3 A, Vector3 B, float x)
+        {
+            Vector3 direction = B - A;
+            float distance = direction.magnitude;
+        
+            // Ensure B is not equal to A to avoid division by zero
+            if (distance > 0) return A + (x / distance) * direction;
+
+            // A and B are the same point, return A
+            return A;
         }
     }
 }
