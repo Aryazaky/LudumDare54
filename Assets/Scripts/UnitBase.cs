@@ -1,15 +1,19 @@
 ﻿using System;
 using Gespell.Enums;
 using Gespell.Interfaces;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Gespell
 {
+    [RequireComponent(typeof(Animator))]
     public abstract class UnitBase : MonoBehaviour, IHasStats, IHasFaction, IDamageable, ICanAttack, IHealable, IHasHealthBar,
-        IInitializable<(UnitManager unitManager, UnitStat stat, UnitFaction faction)>
+        IInitializable<(UnitManager unitManager, AnimatorController animatorController, UnitStat stat, UnitFaction faction)>
     {
         protected UnitManager Manager;
         private UnitStat stat;
+        
+        // ReSharper disable once InconsistentNaming
         public new Transform transform { get; private set; }
         public UnitStat Stat => stat;
         public UnitFaction Faction { get; private set; }
@@ -21,10 +25,11 @@ namespace Gespell
             transform = base.transform;
         }
 
-        public virtual void Initialize((UnitManager unitManager, UnitStat stat, UnitFaction faction) data)
+        public virtual void Initialize((UnitManager unitManager, AnimatorController animatorController, UnitStat stat, UnitFaction faction) data)
         {
             Manager = data.unitManager;
             stat = data.stat;
+            GetComponent<Animator>().runtimeAnimatorController = data.animatorController;
             MaxHealth = data.stat.health;
             Faction = data.faction;
             Initialized = true;

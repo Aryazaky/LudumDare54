@@ -47,6 +47,9 @@ TagManager:
   - name: Enemy
     uniqueID: 4273271005
     locked: 0
+  - name: Spell
+    uniqueID: 1440644019
+    locked: 0
   - name: Player
     uniqueID: 1641118495
     locked: 0

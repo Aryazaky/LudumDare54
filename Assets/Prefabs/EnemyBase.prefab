@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6074691788362508049
+--- !u!1001 &3789932264269534191
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -22,50 +22,56 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3098034817797376655, guid: db98facc066d1fa42bbbe7733a35105d, type: 3}
       propertyPath: m_Name
-      value: Player2
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387216825733326807, guid: db98facc066d1fa42bbbe7733a35105d, type: 3}
+      propertyPath: m_Size.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387216825733326807, guid: db98facc066d1fa42bbbe7733a35105d, type: 3}
+      propertyPath: m_Size.y
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5387216825733326807, guid: db98facc066d1fa42bbbe7733a35105d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 508153323, guid: b1458b5645ea925458ce7dcddd88b6e0, type: 3}
+      objectReference: {fileID: 764587780, guid: 96f0fe28c54d08d4aa2b681370c3fc16, type: 3}
     - target: {fileID: 5387216825733326807, guid: db98facc066d1fa42bbbe7733a35105d, type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5387216825733326807, guid: db98facc066d1fa42bbbe7733a35105d, type: 3}
       propertyPath: m_SortingLayerID
-      value: 1641118495
+      value: -21696291
       objectReference: {fileID: 0}
     - target: {fileID: 5387216825733326807, guid: db98facc066d1fa42bbbe7733a35105d, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6284582700663322481, guid: db98facc066d1fa42bbbe7733a35105d, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: c5367df3def50ae4988aba6038cd1cb3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3098034817797376655, guid: db98facc066d1fa42bbbe7733a35105d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1516530485086242423}
+      addedObject: {fileID: -2155238774691367515}
   m_SourcePrefab: {fileID: 100100000, guid: db98facc066d1fa42bbbe7733a35105d, type: 3}
---- !u!1 &9129867092614360478 stripped
+--- !u!1 &2190690129101265248 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3098034817797376655, guid: db98facc066d1fa42bbbe7733a35105d, type: 3}
-  m_PrefabInstance: {fileID: 6074691788362508049}
+  m_PrefabInstance: {fileID: 3789932264269534191}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1516530485086242423
+--- !u!114 &-2155238774691367515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9129867092614360478}
+  m_GameObject: {fileID: 2190690129101265248}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7652bb09a9984a62bbb9c5d28ec857bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c57735becee4f8c83ce0ccb8e262fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockStrength: 0.5
+  knockDuration: 2

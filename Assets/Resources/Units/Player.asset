@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c23d2c68f5c451fa8809c2cdfabc477, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  unitPrefab: {fileID: 2837018641837273408, guid: 7b7a638c13098cb40a4337ac6f0cf749, type: 3}
+  unitPrefab: {fileID: 1516530485086242423, guid: adb8cdae652479d4aa080ec38d812537, type: 3}
   faction: 0
   stat:
     health: 10
     attack: 1
     interval: 0
     speed: 0
+    range: 0
+  animatorController: {fileID: 9100000, guid: c5367df3def50ae4988aba6038cd1cb3, type: 2}
+  healthBarRelativePosition: {x: 0, y: 0, z: 0}
+  healthBarPrefab: {fileID: 0}

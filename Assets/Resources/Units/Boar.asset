@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c23d2c68f5c451fa8809c2cdfabc477, type: 3}
   m_Name: Boar
   m_EditorClassIdentifier: 
-  unitPrefab: {fileID: 8528098211048850978, guid: 85bedf3626d6dce40b94d838ce06bf4d, type: 3}
+  unitPrefab: {fileID: -2155238774691367515, guid: d0ba6b597acf72c4bbb646c77c94d233, type: 3}
   faction: 1
   stat:
     health: 10
     attack: 1
     interval: 1
-    speed: 5
+    speed: 7
     range: 5
+  animatorController: {fileID: 9100000, guid: fbc9dcbf58bd7894fa86b96dfe961bc4, type: 2}
+  healthBarRelativePosition: {x: 0, y: 0, z: 0}
+  healthBarPrefab: {fileID: 0}
