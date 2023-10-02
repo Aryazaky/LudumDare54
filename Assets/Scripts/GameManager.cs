@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Gespell.Gestures;
-using Gespell.Scriptables;
 using UnityEngine;
 
 namespace Gespell

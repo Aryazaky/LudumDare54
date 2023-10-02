@@ -1,6 +1,4 @@
-﻿using System;
-using Gespell.Enums;
-using UnityEditor.Animations;
+﻿using Gespell.Enums;
 using UnityEngine;
 
 namespace Gespell.Scriptables

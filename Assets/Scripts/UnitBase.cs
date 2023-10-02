@@ -2,14 +2,13 @@
 using Gespell.Enums;
 using Gespell.Interfaces;
 using Gespell.Utilities;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Gespell
 {
     [RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
     public abstract class UnitBase : MonoBehaviour, IHasStats, IHasFaction, IDamageable, ICanAttack, IHealable, IHasHealthBar,
-        IInitializable<(UnitManager unitManager, AnimatorController animatorController, UnitStat stat, UnitFaction faction)>
+        IInitializable<(UnitManager unitManager, RuntimeAnimatorController animatorController, UnitStat stat, UnitFaction faction)>
     {
         protected UnitManager Manager;
         private new SpriteRenderer renderer;
@@ -28,7 +27,7 @@ namespace Gespell
             renderer = GetComponent<SpriteRenderer>();
         }
 
-        public virtual void Initialize((UnitManager unitManager, AnimatorController animatorController, UnitStat stat, UnitFaction faction) data)
+        public virtual void Initialize((UnitManager unitManager, RuntimeAnimatorController animatorController, UnitStat stat, UnitFaction faction) data)
         {
             Manager = data.unitManager;
             stat = data.stat;

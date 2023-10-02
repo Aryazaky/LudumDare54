@@ -1,5 +1,4 @@
-﻿using System;
-using Gespell.Interfaces;
+﻿using Gespell.Interfaces;
 using UnityEngine;
 
 namespace Gespell
