@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Gespell.Utilities
@@ -19,6 +21,11 @@ namespace Gespell.Utilities
         {
             if(array.Length == 0) Debug.LogWarning("Array is empty");
             return array.Length - 1;
+        }
+
+        public static IEnumerable<T> ReverseList<T>(this IEnumerable<T> list)
+        {
+            return list.Reverse();
         }
     }
 }
